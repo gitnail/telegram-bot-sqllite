@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import sqlite3
 
-class SQLighter:
+class SQLClient:
     def __init__(self, database):
         self.connection = sqlite3.connect(database)
         self.cursor = self.connection.cursor()
