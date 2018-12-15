@@ -43,6 +43,10 @@ def handle_text(message):
     uid = message.from_user.id
     if uid in worker:
         worker[uid](message)
+        try:
+            del worker[uid]
+        except:
+            pass
     else:
         bot.send_message(message.chat.id, "Id dont' undestand :(")
 
