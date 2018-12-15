@@ -18,6 +18,7 @@ bot = telebot.TeleBot(config.token)
 def get_by_date(message):
     try:
         date = datetime.datetime.strptime(message.text, "%Y-%M-%d")
+        bot.send_message(message.chat.id, "Date's format is correct")
     except Exception as ex:
         print(ex, file=sys.stderr)
         bot.send_message(message.chat.id, "Error: {}".format(ex))
