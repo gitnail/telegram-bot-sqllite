@@ -21,7 +21,7 @@ def execute(message, bot):
         res = client.execute(message.text)
         if not res:
             res = "<empty_reply>"
-        bot.send_message(message.chat.id, res)
+        bot.send_message(message.chat.id, str(res))
 
     do_safe(action, bot, message)
 
