@@ -1,24 +1,9 @@
 from sqlite import *
 from common import *
 
-def add_position(sql, position):
-    sql.execute('INSERT INTO Position (Latitude, Longitude) values (%s, %s);' % (position.Latitude, position.Longitude))
-    position_id = sql.last_insert_rowid()
-    print("add_position id:", position_id)
-    return position_id
-
-def add_weather(sql, weather):
-    sql.execute('INSERT INTO Weather (Light, Wind, Dumpness) values (%s, %s, %s);'
-        % (weather.Light, weather.Wind, weather.Dumpness))
-    weather_id = sql.last_insert_rowid()
-    print("add_weather id:", weather_id)
-    return weather_id
-
 def add_side_conditions(sql, side_conditions):
-    position_id = add_position(sql, side_conditions.Position)
-    weather_id = add_weather(sql, side_conditions.Weather)
-    sql.execute('INSERT INTO SideConditions (PositionID, WeatherID, DateTime) values (%s, %s, "%s");'
-        % (position_id, weather_id, side_conditions.DateTime))
+    sql.execute('INSERT INTO SideConditions (Weather, Date, Latitude, Longitude, LightConditions) values (%s, "%s", %s, %s, %s);'
+        % (side_conditions.Weather, side_conditions.DateTime, side_conditions.Latitude, side_conditions.Longitude, side_conditions.Light))
     side_conditions_id = sql.last_insert_rowid()
     print("add_side_conditions id:", side_conditions_id)
     return side_conditions_id

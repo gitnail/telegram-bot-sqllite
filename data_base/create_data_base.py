@@ -4,26 +4,13 @@ def create_data_base(name):
     sql = SQLighter(name)
 
     print(sql.execute("""
-        CREATE TABLE Position (
-            PositionID integer PRIMARY KEY AUTOINCREMENT,
-            Latitude real,
-            Longitude real
-        );
-        """))
-    print(sql.execute("""
-        CREATE TABLE Weather (
-            WeatherID integer PRIMARY KEY AUTOINCREMENT,
-            Light int,
-            Wind int,
-            Dumpness int
-        );
-        """))
-    print(sql.execute("""
         CREATE TABLE SideConditions (
             SideConditionsID integer PRIMARY KEY AUTOINCREMENT,
-            PositionID integer,
-            WeatherID integer,
-            DateTime varchar(255)
+            Weather integer,
+            Date varchar(255),
+            Latitude real,
+            LightConditions integer,
+            Longitude real
         );
         """))
     print(sql.execute("""
@@ -59,7 +46,8 @@ def create_data_base(name):
         """))
     print(sql.execute("""
         CREATE TABLE Accident (
-            SideConditionsID integer PRIMARY KEY AUTOINCREMENT,
+            AccidentID integer PRIMARY KEY AUTOINCREMENT,
+            SideConditionsID,
             VehicleID integer,
             RoadID integer,
             ParticipantID integer,
