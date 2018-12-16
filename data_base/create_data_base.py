@@ -28,7 +28,7 @@ def create_data_base(name):
         );
         """)
     sql.execute("""
-        CREATE TABLE IF NOT EXISTS Vehicle (
+        CREATE TABLE IF NOT EXISTS Vechicle (
             VechicleID integer PRIMARY KEY AUTOINCREMENT,
             Type integer,
             Year varchar(255),
@@ -48,7 +48,7 @@ def create_data_base(name):
         CREATE TABLE IF NOT EXISTS Accident (
             AccidentID integer PRIMARY KEY AUTOINCREMENT,
             SideConditionsID integer references SideConditions,
-            VehicleID integer references Vehicle,
+            VechicleID integer references Vechicle,
             RoadID integer references Road,
             ParticipantID integer references Participant,
             PoliceID integer references Police

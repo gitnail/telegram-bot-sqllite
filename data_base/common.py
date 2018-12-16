@@ -34,7 +34,7 @@ class Participant:
 class Accident:
     def __init__(self):
         self.SideConditions = SideConditions()
-        self.Vehicle = Vechicle()
+        self.Vechicle = Vechicle()
         self.Road = Road()
         self.Participant = Participant()
         self.Police = Police()
