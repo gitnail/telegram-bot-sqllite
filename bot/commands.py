@@ -23,7 +23,7 @@ def get_by_date(message, bot):
 
         res = []
         if accidents:
-            res.append(["Index", "Date", "Sex", "Experience", "VehicleType"])
+            res.append(["Index", "Date", "Sex", "Experience", "VechicleType"])
         cur_index = 0
         for accident in accidents:
             sex = client.execute("SELECT Sex FROM Participant WHERE ParticipantId = {}".format(accident[4]))[0][0]
