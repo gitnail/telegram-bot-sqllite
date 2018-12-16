@@ -14,7 +14,9 @@ def add_weather(sql, weather):
     print("add_weather id:", weather_id)
     return weather_id
 
-def add_side_conditions(sql, side_conditions, position_id, weather_id):
+def add_side_conditions(sql, side_conditions):
+    position_id = add_position(sql, side_conditions.Position)
+    weather_id = add_weather(sql, side_conditions.Weather)
     sql.execute('INSERT INTO SideConditions (PositionID, WeatherID, DateTime) values (%s, %s, "%s");'
         % (position_id, weather_id, side_conditions.DateTime))
     side_conditions_id = sql.last_insert_rowid()
@@ -47,9 +49,7 @@ def add_participant(sql, participant):
     return participant_id
 
 def add_accident(sql, accident):
-    position_id = add_position(sql, accident.SideConditions.Position)
-    weather_id = add_weather(sql, accident.SideConditions.Weather)
-    side_conditions_id = add_side_conditions(sql, accident.SideConditions, position_id, weather_id)
+    side_conditions_id = add_side_conditions(sql, accident.SideConditions)
     road_id = add_road(sql, accident.Road)
     police_id = add_police(sql, accident.Police)
     vehicle_id = add_vehicle(sql, accident.Vehicle)
