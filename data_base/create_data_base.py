@@ -66,3 +66,5 @@ def create_data_base(name):
             PoliceID int
         );
         """))
+
+create_data_base("accidents.db")
