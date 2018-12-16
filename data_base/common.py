@@ -15,7 +15,7 @@ class SideConditions:
     def __init__(self):
         self.Position = Position()
         self.Weather = Weather()
-        self.DateTime = "20180101 10:40"
+        self.DateTime = "2018-01-01"
 
 class Road:
     def __init__(self):
