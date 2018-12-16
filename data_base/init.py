@@ -1,17 +1,17 @@
 from sqlite import *
 
-sql = SQLighter("db_name.db")
+sql = SQLighter("accidents.db")
 
 print(sql.execute("""
     CREATE TABLE Position (
-        PositionID int,
-        Latitude float,
-        Longiture float
+        PositionID integer PRIMARY KEY AUTOINCREMENT,
+        Latitude real,
+        Longitude real
     );
     """))
 print(sql.execute("""
     CREATE TABLE Weather (
-        WeatherID int,
+        WeatherID integer PRIMARY KEY AUTOINCREMENT,
         Light int,
         Wind int,
         Dumpness int
@@ -19,29 +19,29 @@ print(sql.execute("""
     """))
 print(sql.execute("""
     CREATE TABLE SideConditions (
-        SideConditionsID int,
-        PositionID int,
-        WeatherID int,
+        SideConditionsID integer PRIMARY KEY AUTOINCREMENT,
+        PositionID integer,
+        WeatherID integer,
         DateTime varchar(255)
     );
     """))
 print(sql.execute("""
     CREATE TABLE Road (
-        RoadID int,
+        RoadID integer PRIMARY KEY AUTOINCREMENT,
         Type varchar(255),
         SpeedLimit int
     );
     """))
 print(sql.execute("""
     CREATE TABLE Police (
-        PoliceID int,
+        PoliceID integer PRIMARY KEY AUTOINCREMENT,
         Rank varchar(255),
         District varchar(255)
     );
     """))
 print(sql.execute("""
-    CREATE TABLE Vechicle (
-        VechicleID int,
+    CREATE TABLE Vehicle (
+        VechicleID integer PRIMARY KEY AUTOINCREMENT,
         Type varchar(255),
         Year varchar(255),
         Class varchar(255)
@@ -49,7 +49,7 @@ print(sql.execute("""
     """))
 print(sql.execute("""
     CREATE TABLE Participant (
-        ParticipantID int,
+        ParticipantID integer PRIMARY KEY AUTOINCREMENT,
         HealthData varchar(255),
         Sex varchar(255),
         Age varchar(255),
@@ -58,10 +58,10 @@ print(sql.execute("""
     """))
 print(sql.execute("""
     CREATE TABLE Accident (
-        SideConditionsID int,
-        VehicleID int,
-        RoadID int,
-        ParticipantID int,
+        SideConditionsID integer PRIMARY KEY AUTOINCREMENT,
+        VehicleID integer,
+        RoadID integer,
+        ParticipantID integer,
         PoliceID int
     );
     """))

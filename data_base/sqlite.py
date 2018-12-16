@@ -24,6 +24,7 @@ class SQLighter:
             return len(result)
 
     def execute(self, request):
+        print("request:", request)
         with self.connection:
             result = self.cursor.execute(request).fetchall()
             return result
@@ -32,3 +33,5 @@ class SQLighter:
         """ Закрываем текущее соединение с БД """
         self.connection.close()
 
+    def last_insert_rowid(self):
+        return list(self.execute("SELECT last_insert_rowid()"))[0][0]
