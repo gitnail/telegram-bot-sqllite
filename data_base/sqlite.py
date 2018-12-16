@@ -8,6 +8,7 @@ class SQLighter:
         self.cursor = self.connection.cursor()
 
     def execute(self, request):
+        request = request.replace('nan', 'NULL')
         print("request:", request)
         with self.connection:
             result = self.cursor.execute(request).fetchall()

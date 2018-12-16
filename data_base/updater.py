@@ -66,8 +66,3 @@ def add_accident(sql, accident):
     print("added accident:", accident_id)
     return accident_id
 
-
-accident = Accident()
-
-sql = SQLighter("accidents.db")
-add_accident(sql, accident)
