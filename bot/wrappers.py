@@ -19,5 +19,5 @@ def do_safe(func, bot, message):
 def send_result(bot, message, res):
     if not res:
         res = "<empty_reply>"
-    bot.send_message(message.chat.id, str(res))
+    bot.send_message(message.chat.id, "```{}```".format(res), parse_mode="Markdown")
 
