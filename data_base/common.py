@@ -10,7 +10,7 @@ class SideConditions:
 
 class Road:
     def __init__(self):
-        self.Type = "normal"
+        self.Type = 0
         self.SpeedLimit = 60
 
 class Police:

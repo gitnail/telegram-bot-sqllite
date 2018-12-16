@@ -16,7 +16,7 @@ def create_data_base(name):
     print(sql.execute("""
         CREATE TABLE Road (
             RoadID integer PRIMARY KEY AUTOINCREMENT,
-            Type varchar(255),
+            Type integer,
             SpeedLimit int
         );
         """))
@@ -30,7 +30,7 @@ def create_data_base(name):
     print(sql.execute("""
         CREATE TABLE Vehicle (
             VechicleID integer PRIMARY KEY AUTOINCREMENT,
-            Type varchar(255),
+            Type integer,
             Year varchar(255),
             Class varchar(255)
         );

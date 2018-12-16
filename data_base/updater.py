@@ -9,7 +9,7 @@ def add_side_conditions(sql, side_conditions):
     return side_conditions_id
 
 def add_road(sql, road):
-    sql.execute('INSERT INTO Road (Type, SpeedLimit) values ("%s", %s);' % (road.Type, road.SpeedLimit))
+    sql.execute('INSERT INTO Road (Type, SpeedLimit) values (%s, %s);' % (road.Type, road.SpeedLimit))
     road_id = sql.last_insert_rowid()
     print("add_road id:", road_id)
     return road_id
@@ -21,7 +21,7 @@ def add_police(sql, police):
     return police_id
 
 def add_vehicle(sql, vehicle):
-    sql.execute('INSERT INTO Vehicle (Type, Year, Class) values ("%s", %s, "%s");' % (vehicle.Type, vehicle.Year, vehicle.Class))
+    sql.execute('INSERT INTO Vehicle (Type, Year, Class) values (%s, %s, "%s");' % (vehicle.Type, vehicle.Year, vehicle.Class))
     vehicle_id = sql.last_insert_rowid()
     print("add_vehicle id:", vehicle_id)
     return vehicle_id
