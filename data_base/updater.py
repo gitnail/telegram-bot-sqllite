@@ -21,7 +21,7 @@ def add_police(sql, police):
     return police_id
 
 def add_vehicle(sql, vehicle):
-    sql.execute('INSERT INTO Vehicle (Type, Year, Class) values (%s, %s, "%s");' % (vehicle.Type, vehicle.Year, vehicle.Class))
+    sql.execute('INSERT INTO Vechicle (Type, Year, Class) values (%s, %s, "%s");' % (vehicle.Type, vehicle.Year, vehicle.Class))
     vehicle_id = sql.last_insert_rowid()
     print("add_vehicle id:", vehicle_id)
     return vehicle_id
@@ -37,9 +37,9 @@ def add_accident(sql, accident):
     side_conditions_id = add_side_conditions(sql, accident.SideConditions)
     road_id = add_road(sql, accident.Road)
     police_id = add_police(sql, accident.Police)
-    vehicle_id = add_vehicle(sql, accident.Vehicle)
+    vehicle_id = add_vehicle(sql, accident.Vechicle)
     participant_id = add_participant(sql, accident.Participant)
-    print(sql.execute('INSERT INTO Accident (SideConditionsID, VehicleID, RoadID, ParticipantID, PoliceID, ExternalID) values (%s, %s, %s, %s, %s, "%s");'
+    print(sql.execute('INSERT INTO Accident (SideConditionsID, VechicleID, RoadID, ParticipantID, PoliceID, ExternalID) values (%s, %s, %s, %s, %s, "%s");'
         % (
             side_conditions_id,
             vehicle_id,

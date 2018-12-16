@@ -4,7 +4,7 @@ from common import *
 from updater import *
 
 accident_data = pandas.read_csv('../qdata/Accidents0515.csv')
-vehicles_data = pandas.read_csv('../qdata/Vehicles0515.csv')
+vehicles_data = pandas.read_csv('../qdata/Vechicles0515.csv')
 
 sql = SQLighter("accidents.db")
 
@@ -29,7 +29,7 @@ for index, row in accident_data[:3500].iterrows():
 for index, row in vehicles_data[:3500].iterrows():
     accident = accidents[index]
     
-    accident.Vehicle.Type = row["Vehicle_Type"]
+    accident.Vechicle.Type = row["Vechicle_Type"]
 
     accident.Participant.Sex = row["Sex_of_Driver"]
     accident.Participant.Age = row["Age_of_Driver"]
