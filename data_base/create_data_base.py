@@ -51,7 +51,8 @@ def create_data_base(name):
             VechicleID integer references Vechicle,
             RoadID integer references Road,
             ParticipantID integer references Participant,
-            PoliceID integer references Police
+            PoliceID integer references Police,
+            ExternalID varchar(255)
         );
         """)
     print("all tables created")
