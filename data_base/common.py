@@ -38,3 +38,4 @@ class Accident:
         self.Road = Road()
         self.Participant = Participant()
         self.Police = Police()
+        self.ExternalID = ""

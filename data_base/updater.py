@@ -39,13 +39,14 @@ def add_accident(sql, accident):
     police_id = add_police(sql, accident.Police)
     vehicle_id = add_vehicle(sql, accident.Vehicle)
     participant_id = add_participant(sql, accident.Participant)
-    print(sql.execute('INSERT INTO Accident (SideConditionsID, VehicleID, RoadID, ParticipantID, PoliceID) values (%s, %s, %s, %s, %s);'
+    print(sql.execute('INSERT INTO Accident (SideConditionsID, VehicleID, RoadID, ParticipantID, PoliceID, ExternalID) values (%s, %s, %s, %s, %s, "%s");'
         % (
             side_conditions_id,
             vehicle_id,
             road_id,
             participant_id,
-            police_id
+            police_id,
+            accident.ExternalID
         )))
     accident_id = sql.last_insert_rowid()
     print("added accident:", accident_id)
