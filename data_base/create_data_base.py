@@ -47,11 +47,11 @@ def create_data_base(name):
     print(sql.execute("""
         CREATE TABLE Accident (
             AccidentID integer PRIMARY KEY AUTOINCREMENT,
-            SideConditionsID,
-            VehicleID integer,
-            RoadID integer,
-            ParticipantID integer,
-            PoliceID int
+            SideConditionsID integer references SideConditions,
+            VehicleID integer references Vehicle,
+            RoadID integer references Road,
+            ParticipantID integer references Participant,
+            PoliceID integer references Police
         );
         """))
 
