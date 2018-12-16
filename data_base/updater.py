@@ -3,7 +3,7 @@ from common import *
 
 def add_side_conditions(sql, side_conditions):
     sql.execute('INSERT INTO SideConditions (Weather, Date, Latitude, Longitude, LightConditions) values (%s, "%s", %s, %s, %s);'
-        % (side_conditions.Weather, side_conditions.DateTime, side_conditions.Latitude, side_conditions.Longitude, side_conditions.Light))
+        % (side_conditions.Weather, side_conditions.DateTime.replace('/', '-'), side_conditions.Latitude, side_conditions.Longitude, side_conditions.Light))
     side_conditions_id = sql.last_insert_rowid()
     print("add_side_conditions id:", side_conditions_id)
     return side_conditions_id

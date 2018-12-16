@@ -19,13 +19,17 @@ def handle_start(message):
 def handle_help(message):
     BOT.send_message(message.chat.id, "TODO")
 
-
 @BOT.message_handler(commands=["get_by_date"])
 def handle_get_by_date(message):
     markup = types.ForceReply(selective=False)
     WORKER.update({message.from_user.id: get_by_date})
     BOT.send_message(message.chat.id, "Please enter a date", reply_markup=markup)
 
+@BOT.message_handler(commands=["remove_by_date"])
+def handle_remove_by_date(message):
+    markup = types.ForceReply(selective=False)
+    WORKER.update({message.from_user.id: remove_by_date})
+    BOT.send_message(message.chat.id, "Please enter a date", reply_markup=markup)
 
 @BOT.message_handler(commands=["execute"])
 def handle_execute(message):
