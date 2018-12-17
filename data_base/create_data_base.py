@@ -4,16 +4,6 @@ def create_data_base(name):
     sql = SQLighter(name)
 
     sql.execute("""
-        CREATE TABLE IF NOT EXISTS SideConditions (
-            SideConditionsID integer PRIMARY KEY AUTOINCREMENT,
-            Weather integer,
-            Date varchar(255),
-            Latitude real,
-            LightConditions integer,
-            Longitude real
-        );
-        """)
-    sql.execute("""
         CREATE TABLE IF NOT EXISTS Road (
             RoadID integer PRIMARY KEY AUTOINCREMENT,
             Type integer,
@@ -28,11 +18,31 @@ def create_data_base(name):
         );
         """)
     sql.execute("""
+        CREATE TABLE IF NOT EXISTS Accident (
+            AccidentID integer PRIMARY KEY AUTOINCREMENT,
+            RoadID integer references Road,
+            PoliceID integer references Police,
+            ExternalID varchar(255)
+        );
+        """)
+    sql.execute("""
         CREATE TABLE IF NOT EXISTS Vechicle (
             VechicleID integer PRIMARY KEY AUTOINCREMENT,
+            AccidentID integer references Accident,
             Type integer,
             Year varchar(255),
             Class varchar(255)
+        );
+        """)
+    sql.execute("""
+        CREATE TABLE IF NOT EXISTS SideConditions (
+            SideConditionsID integer PRIMARY KEY AUTOINCREMENT,
+            AccidentID integer references Accident,
+            Weather integer,
+            Date varchar(255),
+            Latitude real,
+            LightConditions integer,
+            Longitude real
         );
         """)
     sql.execute("""
@@ -45,14 +55,10 @@ def create_data_base(name):
         );
         """)
     sql.execute("""
-        CREATE TABLE IF NOT EXISTS Accident (
-            AccidentID integer PRIMARY KEY AUTOINCREMENT,
-            SideConditionsID integer references SideConditions,
-            VechicleID integer references Vechicle,
-            RoadID integer references Road,
+        CREATE TABLE IF NOT EXISTS Participate (
+            AccidentID integer Accident,
             ParticipantID integer references Participant,
-            PoliceID integer references Police,
-            ExternalID varchar(255)
+            primary key (AccidentID, ParticipantID)
         );
         """)
     print("all tables created")
