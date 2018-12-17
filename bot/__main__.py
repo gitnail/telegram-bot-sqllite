@@ -1,12 +1,15 @@
 #! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 import telebot
+import time
 from telebot import types
 import sys
 sys.path.append("../helpers")
 
 from commands import *
 from id_to_string import *
+
+from telebot import apihelper
 
 BOT = telebot.TeleBot(config.token)
  
@@ -103,4 +106,4 @@ if __name__ == "__main__":
         try:
             BOT.polling(none_stop=True)
         except:
-            pass
+            time.sleep(2)

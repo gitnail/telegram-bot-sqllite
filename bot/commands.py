@@ -37,7 +37,7 @@ def get_by_date(message, bot):
         if accidents:
             res.append(["Date", "Sex", "Experience", "VechicleType"])
         for accident in accidents:
-            res.append([accident[0], id_to_string_sex(int(accident[1])), str(accident[2]), id_to_string_vehicle_type(int(accident[3]))])
+            res.append([accident[0], id_to_string_sex(to_int(accident[1])), str(accident[2]), id_to_string_vehicle_type(to_int(accident[3]))])
         
         text = make_table(res)
         if accidents:
@@ -47,6 +47,10 @@ def get_by_date(message, bot):
 
     do_safe(action, bot, message)
 
+def to_int(obj):
+    if not obj:
+        return -1
+    return int(obj)
 
 def group_by_weather(message, bot):
     def action(message, client):
@@ -63,7 +67,7 @@ def group_by_weather(message, bot):
         if selected:
             res.append(["Weather", "Count"])
         for it in selected:
-            res.append([id_to_string_weather(int(it[0])), it[1]])
+            res.append([id_to_string_weather(to_int(it[0])), str(it[1])])
             
         send_result(bot, message, make_table(res))
 

@@ -14,6 +14,7 @@ def do_safe(func, bot, message):
         func(message, client)
     except Exception as ex:
         bot.send_message(message.chat.id, "Error: '{}'".format(ex))
+        raise ex
 
 
 def send_result(bot, message, res):
