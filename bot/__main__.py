@@ -19,17 +19,24 @@ def handle_start(message):
 def handle_help(message):
     BOT.send_message(message.chat.id, "TODO")
 
+
 @BOT.message_handler(commands=["get_by_date"])
 def handle_get_by_date(message):
     markup = types.ForceReply(selective=False)
     WORKER.update({message.from_user.id: get_by_date})
     BOT.send_message(message.chat.id, "Please enter a date", reply_markup=markup)
 
+
 @BOT.message_handler(commands=["execute"])
 def handle_execute(message):
     markup = types.ForceReply(selective=False)
     WORKER.update({message.from_user.id: execute})
     BOT.send_message(message.chat.id, "Please enter an SQL command to execute", reply_markup=markup)
+
+
+@BOT.message_handler(commands=["group_by_weather"])
+def handle_group_by_weather(message):
+    group_by_weather(message, BOT)
 
 
 @BOT.message_handler(content_types=["text"])
