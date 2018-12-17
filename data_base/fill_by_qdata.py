@@ -10,7 +10,7 @@ sql = SQLighter("accidents.db")
 
 accidents = []
 
-for index, row in accident_data[:3500].iterrows():
+for index, row in accident_data.iterrows():
     accident = Accident()
 
     accident.SideConditions.Latitude = row["Latitude"]
@@ -26,7 +26,7 @@ for index, row in accident_data[:3500].iterrows():
 
     accidents.append(accident)
 
-for index, row in vehicles_data[:3500].iterrows():
+for index, row in vehicles_data.iterrows():
     accident = accidents[index]
     
     accident.Vechicle.Type = row["Vechicle_Type"]
